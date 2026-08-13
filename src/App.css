@@ -5,88 +5,231 @@
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #1a1a2e;
+  font-family: 'Comic Sans MS', 'Segoe UI', sans-serif;
+  background: #FFFFE7;
   min-height: 100vh;
   display: flex;
   justify-content: center;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Декоративные фигурки на фоне */
+body::before {
+  content: '✿ ✦ ❀ ✧';
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  font-size: 1.5rem;
+  color: #FEAAC1;
+  opacity: 0.4;
+  letter-spacing: 10px;
+}
+
+body::after {
+  content: '♥ ♡ ♥';
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  font-size: 1.5rem;
+  color: #7AA2BB;
+  opacity: 0.4;
+  letter-spacing: 8px;
 }
 
 .app {
-  max-width: 500px;
+  max-width: 550px;
   width: 100%;
   min-height: 100vh;
   padding: 40px 20px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== ШРИФТЫ ===== */
+.header h1,
+.mode-title,
+.level-title,
+.finish-screen h2 {
+  font-family: 'NauryzRedKeds', 'Comic Sans MS', cursive;
+  letter-spacing: 1px;
 }
 
 /* ===== ГЛАВНЫЙ ЭКРАН ===== */
 .header {
   text-align: center;
   margin-bottom: 40px;
+  position: relative;
 }
 
 .header h1 {
-  color: #fff;
-  font-size: 2.5rem;
-  margin-bottom: 10px;
+  color: #3D3D3D;
+  font-size: 3rem;
+  margin-bottom: 15px;
+  position: relative;
+  display: inline-block;
+}
+
+.header h1::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: #FEAAC1;
+  border-radius: 2px;
 }
 
 .subtitle {
-  color: #888;
+  color: #7AA2BB;
   font-size: 1.1rem;
+  margin-top: 10px;
 }
 
-.categories {
+.modes {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 18px;
 }
 
-.category-card {
+.mode-card {
   display: flex;
   align-items: center;
-  gap: 20px;
-  padding: 20px;
-  border: none;
+  gap: 18px;
+  padding: 22px;
+  background: #fff;
+  border: 3px solid #7AA2BB;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+}
+
+.mode-card::before {
+  content: '✦';
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  color: #FEAAC1;
+  font-size: 1.2rem;
+  opacity: 0.6;
+}
+
+.mode-card:hover {
+  transform: translateY(-3px) rotate(-1deg);
+  box-shadow: 0 8px 20px rgba(122, 162, 187, 0.3);
+}
+
+.mode-emoji {
+  font-size: 2.8rem;
+  flex-shrink: 0;
+}
+
+.mode-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  flex: 1;
+}
+
+.mode-title {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #3D3D3D;
+}
+
+.mode-description {
+  color: #7AA2BB;
+  font-size: 0.9rem;
+}
+
+.mode-arrow {
+  color: #FEAAC1;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+/* ===== УРОВНИ ===== */
+.levels {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.level-card {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 18px;
+  background: #fff;
+  border: 3px solid #7AA2BB;
   border-radius: 20px;
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   text-align: left;
-  color: white;
+  position: relative;
 }
 
-.category-card:hover {
+.level-card::after {
+  content: '♡';
+  position: absolute;
+  bottom: 8px;
+  right: 15px;
+  color: #FEAAC1;
+  font-size: 1rem;
+  opacity: 0.5;
+}
+
+.level-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 20px rgba(122, 162, 187, 0.25);
 }
 
-.category-card:active {
-  transform: translateY(0);
+.level-emoji {
+  font-size: 2.2rem;
+  flex-shrink: 0;
 }
 
-.emoji {
-  font-size: 2.5rem;
-}
-
-.category-info {
+.level-info {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 4px;
 }
 
-.category-title {
-  font-size: 1.3rem;
+.level-title {
+  font-size: 1.1rem;
   font-weight: bold;
+  color: #3D3D3D;
 }
 
-.category-description {
-  font-size: 0.9rem;
-  opacity: 0.9;
+.level-description {
+  color: #7AA2BB;
+  font-size: 0.85rem;
+  line-height: 1.4;
 }
 
-.question-count {
-  font-size: 0.8rem;
-  opacity: 0.7;
+.level-badges {
+  display: flex;
+  gap: 8px;
+  margin-top: 5px;
+  flex-wrap: wrap;
+}
+
+.badge {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: bold;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.badge-questions {
+  background: #7AA2BB;
 }
 
 /* ===== ЭКРАН ВОПРОСОВ ===== */
@@ -99,65 +242,167 @@ body {
 
 .back-btn {
   background: none;
-  border: none;
-  color: #888;
-  font-size: 2rem;
+  border: 2px solid #7AA2BB;
+  color: #7AA2BB;
+  font-size: 1.5rem;
   cursor: pointer;
-  width: 50px;
-  height: 50px;
-  transition: color 0.2s;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  transition: all 0.2s;
+  background: #fff;
 }
 
 .back-btn:hover {
+  background: #7AA2BB;
   color: #fff;
 }
 
 .progress-bar {
   width: 100%;
-  height: 6px;
-  background: #2a2a3e;
-  border-radius: 3px;
+  height: 8px;
+  background: #fff;
+  border: 2px solid #7AA2BB;
+  border-radius: 4px;
   margin: 20px 0;
   overflow: hidden;
 }
 
 .progress-fill {
   height: 100%;
-  border-radius: 3px;
+  border-radius: 2px;
   transition: width 0.3s ease;
 }
 
 .question-counter {
-  color: #888;
+  color: #7AA2BB;
   font-size: 0.9rem;
   margin-bottom: 20px;
   text-align: center;
+  font-weight: bold;
 }
 
 .question-card {
-  background: #222240;
-  border: 2px solid;
-  border-radius: 25px;
-  padding: 40px 30px;
+  background: #fff;
+  border: 3px solid #7AA2BB;
+  border-radius: 30px;
+  padding: 40px 25px;
   text-align: center;
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 30px;
-  min-height: 300px;
+  gap: 20px;
+  min-height: 350px;
+  position: relative;
+}
+
+.question-card::before {
+  content: '✧';
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  color: #FEAAC1;
+  font-size: 1.5rem;
+}
+
+.question-card::after {
+  content: '✧';
+  position: absolute;
+  bottom: 15px;
+  right: 20px;
+  color: #FEAAC1;
+  font-size: 1.5rem;
 }
 
 .question-emoji {
-  font-size: 4rem;
+  font-size: 3.5rem;
+}
+
+.question-level {
+  color: #FEAAC1;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: bold;
 }
 
 .question-text {
-  color: #fff;
-  font-size: 1.5rem;
-  line-height: 1.5;
+  color: #3D3D3D;
+  font-size: 1.3rem;
+  line-height: 1.6;
   font-weight: 500;
+}
+
+/* ===== ДИЛЕММЫ ===== */
+.dilemma-card {
+  background: #fff;
+  border: 3px solid #7AA2BB;
+  border-radius: 30px;
+  padding: 40px 25px;
+  text-align: center;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  min-height: 350px;
+  position: relative;
+}
+
+.dilemma-options {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+}
+
+.dilemma-option {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: #FFFFE7;
+  border: 2px dashed #7AA2BB;
+  border-radius: 18px;
+  padding: 18px;
+  text-align: left;
+  transition: all 0.2s;
+}
+
+.dilemma-option:hover {
+  border-style: solid;
+  border-color: #FEAAC1;
+  background: #fff5f7;
+}
+
+.option-letter {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: #FEAAC1;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.option-text {
+  color: #3D3D3D;
+  font-size: 1.05rem;
+  line-height: 1.4;
+}
+
+.dilemma-or {
+  color: #FEAAC1;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-weight: bold;
 }
 
 .next-btn {
@@ -174,21 +419,29 @@ body {
   font-weight: bold;
   cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s;
+  font-family: 'NauryzRedKeds', 'Comic Sans MS', cursive;
+  letter-spacing: 1px;
 }
 
 .btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px) rotate(-1deg);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #FF6B6B, #FF69B4);
-  color: white;
+  background: #FEAAC1;
+  color: #fff;
+  border: 2px solid #FEAAC1;
+}
+
+.btn-primary:hover {
+  background: #ff9db8;
 }
 
 .btn-secondary {
-  background: #2a2a3e;
-  color: #fff;
+  background: #fff;
+  color: #7AA2BB;
+  border: 2px solid #7AA2BB;
 }
 
 /* ===== ЭКРАН ЗАВЕРШЕНИЯ ===== */
@@ -207,19 +460,19 @@ body {
 }
 
 .finish-screen h2 {
-  color: #fff;
+  color: #3D3D3D;
   font-size: 2rem;
 }
 
 .finish-text {
-  color: #fff;
-  font-size: 1.3rem;
+  color: #3D3D3D;
+  font-size: 1.2rem;
   font-weight: bold;
 }
 
 .finish-subtext {
-  color: #888;
-  font-size: 1rem;
+  color: #7AA2BB;
+  font-size: 0.95rem;
   margin-bottom: 20px;
 }
 
