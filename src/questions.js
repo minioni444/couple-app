@@ -301,22 +301,17 @@ export const modes = [
   {
     id: 'levels',
     title: '8 уровней',
-    emoji: '🌡️',
-    description: 'От разминки до абсолютной откровенности',
-    color: '#FF6B6B'
+    description: 'От разминки до абсолютной откровенности'
   },
   {
     id: 'never',
     title: 'Я бы никогда не...',
-    emoji: '🚫',
-    description: 'Игра на откровенность',
-    color: '#A78BFA'
+    description: 'Игра на откровенность'
   },
   {
     id: 'wouldYouRather',
     title: 'Что ты выберешь?',
-    emoji: '⚖️',
-    description: 'Сложные дилеммы для двоих',
-    color: '#4ECDC4'
+    description: 'Сложные дилеммы для двоих'
   }
+]
 ]

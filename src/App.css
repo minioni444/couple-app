@@ -5,193 +5,179 @@
 }
 
 body {
-  font-family: 'Comic Sans MS', 'Segoe UI', sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: #FFFFE7;
   min-height: 100vh;
   display: flex;
   justify-content: center;
-  position: relative;
   overflow-x: hidden;
 }
 
-/* Декоративные фигурки на фоне */
-body::before {
-  content: '✿ ✦ ❀ ✧';
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  font-size: 1.5rem;
-  color: #FEAAC1;
-  opacity: 0.4;
-  letter-spacing: 10px;
-}
-
-body::after {
-  content: '♥ ♡ ♥';
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  font-size: 1.5rem;
-  color: #7AA2BB;
-  opacity: 0.4;
-  letter-spacing: 8px;
-}
-
 .app {
-  max-width: 550px;
   width: 100%;
+  max-width: 480px;
   min-height: 100vh;
-  padding: 40px 20px;
-  position: relative;
-  z-index: 1;
-}
-
-/* ===== ШРИФТЫ ===== */
-.header h1,
-.mode-title,
-.level-title,
-.finish-screen h2 {
-  font-family: 'NauryzRedKeds', 'Comic Sans MS', cursive;
-  letter-spacing: 1px;
-}
-
-/* ===== ГЛАВНЫЙ ЭКРАН ===== */
-.header {
-  text-align: center;
-  margin-bottom: 40px;
+  padding: 50px 25px 40px;
   position: relative;
 }
 
-.header h1 {
+/* ===== ГЛАВНАЯ СТРАНИЦА ===== */
+.main-title {
+  font-family: 'NauryzRedKeds', cursive;
   color: #3D3D3D;
-  font-size: 3rem;
-  margin-bottom: 15px;
-  position: relative;
-  display: inline-block;
+  font-size: 2.2rem;
+  line-height: 1.3;
+  text-align: left;
+  margin-top: 20vh;
+  letter-spacing: 0.5px;
 }
 
-.header h1::after {
-  content: '';
-  position: absolute;
-  bottom: -5px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 4px;
-  background: #FEAAC1;
-  border-radius: 2px;
-}
-
-.subtitle {
+.main-subtitle {
+  font-family: 'NauryzRedKeds', cursive;
   color: #7AA2BB;
   font-size: 1.1rem;
-  margin-top: 10px;
+  text-align: left;
+  margin-top: 8px;
 }
 
-.modes {
+/* Фото с овалами */
+.photo-container {
+  position: relative;
+  width: 100%;
+  height: 350px;
+  margin-top: 30px;
+  margin-bottom: 50px;
+}
+
+.oval {
+  position: absolute;
+  border-radius: 50%;
+  aspect-ratio: 3/4;
+}
+
+.oval-back {
+  width: 55%;
+  background: #7AA2BB;
+  bottom: 0;
+  right: 5%;
+  transform: rotate(8deg);
+}
+
+.oval-middle {
+  width: 55%;
+  background: #FEAAC1;
+  bottom: 10%;
+  right: 22%;
+  transform: rotate(-5deg);
+}
+
+.oval-front {
+  width: 55%;
+  background: #7AA2BB;
+  bottom: 20%;
+  right: 12%;
+  transform: rotate(2deg);
+  overflow: hidden;
+  border: 4px solid #fff;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.main-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Правила */
+.rules-section {
+  margin-bottom: 50px;
+}
+
+.rules-title {
+  font-family: 'NauryzRedKeds', cursive;
+  color: #3D3D3D;
+  font-size: 1.6rem;
+  margin-bottom: 20px;
+}
+
+/* Режимы */
+.modes-section {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 15px;
 }
 
 .mode-card {
   display: flex;
-  align-items: center;
-  gap: 18px;
-  padding: 22px;
+  flex-direction: column;
+  gap: 5px;
+  padding: 20px;
   background: #fff;
-  border: 3px solid #7AA2BB;
+  border: 2px solid #7AA2BB;
   border-radius: 25px;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s;
   text-align: left;
-  position: relative;
-  overflow: hidden;
-}
-
-.mode-card::before {
-  content: '✦';
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  color: #FEAAC1;
-  font-size: 1.2rem;
-  opacity: 0.6;
 }
 
 .mode-card:hover {
-  transform: translateY(-3px) rotate(-1deg);
-  box-shadow: 0 8px 20px rgba(122, 162, 187, 0.3);
-}
-
-.mode-emoji {
-  font-size: 2.8rem;
-  flex-shrink: 0;
-}
-
-.mode-info {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  flex: 1;
+  transform: translateY(-2px);
 }
 
 .mode-title {
-  font-size: 1.4rem;
-  font-weight: bold;
+  font-family: 'NauryzRedKeds', cursive;
   color: #3D3D3D;
+  font-size: 1.2rem;
 }
 
 .mode-description {
   color: #7AA2BB;
+  font-size: 0.85rem;
+}
+
+/* ===== ОБЩИЕ СТИЛИ ДЛЯ ВНУТРЕННИХ ЭКРАНОВ ===== */
+.page-title {
+  font-family: 'NauryzRedKeds', cursive;
+  color: #3D3D3D;
+  font-size: 2rem;
+  margin-top: 20px;
+}
+
+.page-subtitle {
+  color: #7AA2BB;
   font-size: 0.9rem;
+  margin-top: 5px;
+  margin-bottom: 30px;
 }
 
-.mode-arrow {
-  color: #FEAAC1;
-  font-size: 1.8rem;
-  font-weight: bold;
+.back-btn {
+  background: #fff;
+  border: 2px solid #7AA2BB;
+  color: #7AA2BB;
+  font-size: 1.2rem;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
 }
 
-/* ===== УРОВНИ ===== */
+/* Уровни */
 .levels {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
 }
 
 .level-card {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 15px;
   padding: 18px;
   background: #fff;
-  border: 3px solid #7AA2BB;
+  border: 2px solid #7AA2BB;
   border-radius: 20px;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
   text-align: left;
-  position: relative;
-}
-
-.level-card::after {
-  content: '♡';
-  position: absolute;
-  bottom: 8px;
-  right: 15px;
-  color: #FEAAC1;
-  font-size: 1rem;
-  opacity: 0.5;
-}
-
-.level-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(122, 162, 187, 0.25);
-}
-
-.level-emoji {
-  font-size: 2.2rem;
-  flex-shrink: 0;
 }
 
 .level-info {
@@ -201,69 +187,47 @@ body::after {
 }
 
 .level-title {
-  font-size: 1.1rem;
-  font-weight: bold;
+  font-family: 'NauryzRedKeds', cursive;
+  font-size: 1rem;
   color: #3D3D3D;
 }
 
 .level-description {
   color: #7AA2BB;
-  font-size: 0.85rem;
-  line-height: 1.4;
+  font-size: 0.8rem;
 }
 
 .level-badges {
   display: flex;
-  gap: 8px;
+  gap: 6px;
   margin-top: 5px;
-  flex-wrap: wrap;
 }
 
 .badge {
-  padding: 4px 12px;
-  border-radius: 20px;
-  font-size: 0.7rem;
+  padding: 3px 10px;
+  border-radius: 15px;
+  font-size: 0.65rem;
   font-weight: bold;
   color: #fff;
-  text-transform: uppercase;
 }
 
 .badge-questions {
   background: #7AA2BB;
 }
 
-/* ===== ЭКРАН ВОПРОСОВ ===== */
+/* Вопросы */
 .question-screen {
-  position: relative;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-.back-btn {
-  background: none;
-  border: 2px solid #7AA2BB;
-  color: #7AA2BB;
-  font-size: 1.5rem;
-  cursor: pointer;
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  transition: all 0.2s;
-  background: #fff;
-}
-
-.back-btn:hover {
-  background: #7AA2BB;
-  color: #fff;
-}
-
 .progress-bar {
   width: 100%;
-  height: 8px;
+  height: 6px;
   background: #fff;
-  border: 2px solid #7AA2BB;
-  border-radius: 4px;
+  border: 1px solid #7AA2BB;
+  border-radius: 3px;
   margin: 20px 0;
   overflow: hidden;
 }
@@ -271,115 +235,78 @@ body::after {
 .progress-fill {
   height: 100%;
   border-radius: 2px;
-  transition: width 0.3s ease;
+  transition: width 0.3s;
 }
 
 .question-counter {
   color: #7AA2BB;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   margin-bottom: 20px;
   text-align: center;
-  font-weight: bold;
 }
 
 .question-card {
   background: #fff;
-  border: 3px solid #7AA2BB;
-  border-radius: 30px;
-  padding: 40px 25px;
+  border: 2px solid #7AA2BB;
+  border-radius: 25px;
+  padding: 30px 20px;
   text-align: center;
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  gap: 20px;
-  min-height: 350px;
-  position: relative;
-}
-
-.question-card::before {
-  content: '✧';
-  position: absolute;
-  top: 15px;
-  left: 20px;
-  color: #FEAAC1;
-  font-size: 1.5rem;
-}
-
-.question-card::after {
-  content: '✧';
-  position: absolute;
-  bottom: 15px;
-  right: 20px;
-  color: #FEAAC1;
-  font-size: 1.5rem;
-}
-
-.question-emoji {
-  font-size: 3.5rem;
+  gap: 15px;
+  min-height: 300px;
 }
 
 .question-level {
   color: #FEAAC1;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   text-transform: uppercase;
-  letter-spacing: 2px;
-  font-weight: bold;
+  letter-spacing: 1px;
 }
 
 .question-text {
   color: #3D3D3D;
-  font-size: 1.3rem;
-  line-height: 1.6;
-  font-weight: 500;
+  font-size: 1.2rem;
+  line-height: 1.5;
 }
 
-/* ===== ДИЛЕММЫ ===== */
+/* Дилеммы */
 .dilemma-card {
   background: #fff;
-  border: 3px solid #7AA2BB;
-  border-radius: 30px;
-  padding: 40px 25px;
+  border: 2px solid #7AA2BB;
+  border-radius: 25px;
+  padding: 30px 20px;
   text-align: center;
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  gap: 25px;
-  min-height: 350px;
-  position: relative;
+  gap: 20px;
+  min-height: 300px;
 }
 
 .dilemma-options {
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  width: 100%;
+  gap: 12px;
 }
 
 .dilemma-option {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 12px;
   background: #FFFFE7;
   border: 2px dashed #7AA2BB;
-  border-radius: 18px;
-  padding: 18px;
+  border-radius: 15px;
+  padding: 15px;
   text-align: left;
-  transition: all 0.2s;
-}
-
-.dilemma-option:hover {
-  border-style: solid;
-  border-color: #FEAAC1;
-  background: #fff5f7;
 }
 
 .option-letter {
-  width: 35px;
-  height: 35px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   background: #FEAAC1;
   color: #fff;
@@ -387,55 +314,41 @@ body::after {
   align-items: center;
   justify-content: center;
   font-weight: bold;
-  font-size: 1.1rem;
   flex-shrink: 0;
 }
 
 .option-text {
   color: #3D3D3D;
-  font-size: 1.05rem;
+  font-size: 0.95rem;
   line-height: 1.4;
 }
 
 .dilemma-or {
   color: #FEAAC1;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
-  letter-spacing: 3px;
-  font-weight: bold;
+  letter-spacing: 2px;
 }
 
-.next-btn {
-  margin-top: 30px;
-  width: 100%;
-}
-
-/* ===== КНОПКИ ===== */
+/* Кнопки */
 .btn {
-  padding: 15px 30px;
+  padding: 15px 25px;
   border: none;
   border-radius: 50px;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: bold;
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
-  font-family: 'NauryzRedKeds', 'Comic Sans MS', cursive;
-  letter-spacing: 1px;
+  font-family: 'NauryzRedKeds', cursive;
+  transition: transform 0.2s;
 }
 
 .btn:hover {
-  transform: translateY(-2px) rotate(-1deg);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
 }
 
 .btn-primary {
   background: #FEAAC1;
   color: #fff;
-  border: 2px solid #FEAAC1;
-}
-
-.btn-primary:hover {
-  background: #ff9db8;
 }
 
 .btn-secondary {
@@ -444,7 +357,12 @@ body::after {
   border: 2px solid #7AA2BB;
 }
 
-/* ===== ЭКРАН ЗАВЕРШЕНИЯ ===== */
+.next-btn {
+  margin-top: 25px;
+  width: 100%;
+}
+
+/* Завершение */
 .finish-screen {
   display: flex;
   flex-direction: column;
@@ -452,34 +370,31 @@ body::after {
   justify-content: center;
   min-height: 80vh;
   text-align: center;
-  gap: 20px;
-}
-
-.finish-emoji {
-  font-size: 5rem;
+  gap: 15px;
 }
 
 .finish-screen h2 {
+  font-family: 'NauryzRedKeds', cursive;
   color: #3D3D3D;
-  font-size: 2rem;
+  font-size: 1.8rem;
 }
 
 .finish-text {
   color: #3D3D3D;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: bold;
 }
 
 .finish-subtext {
   color: #7AA2BB;
-  font-size: 0.95rem;
-  margin-bottom: 20px;
+  font-size: 0.85rem;
+  margin-bottom: 15px;
 }
 
 .finish-buttons {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 12px;
   width: 100%;
-  max-width: 300px;
+  max-width: 280px;
 }

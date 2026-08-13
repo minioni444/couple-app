@@ -1,14 +1,14 @@
 import { useState } from 'react'
 import './App.css'
 import { levels, neverHaveIEver, wouldYouRather, modes } from './questions'
+import mainPhoto from './assets/main.png'
 
 function App() {
-  const [currentMode, setCurrentMode] = useState(null) // 'levels', 'never', 'wouldYouRather'
-  const [selectedItem, setSelectedItem] = useState(null) // выбранный уровень
+  const [currentMode, setCurrentMode] = useState(null)
+  const [selectedItem, setSelectedItem] = useState(null)
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isFinished, setIsFinished] = useState(false)
 
-  // Сброс состояния при переходе в режим
   const openMode = (modeId) => {
     setCurrentMode(modeId)
     setSelectedItem(null)
@@ -32,29 +32,38 @@ function App() {
     }
   }
 
-  // ===== ГЛАВНЫЙ ЭКРАН (выбор режима) =====
+  // ===== ГЛАВНАЯ СТРАНИЦА =====
   if (!currentMode) {
     return (
       <div className="app">
-        <header className="header">
-          <h1>💕 Для нас</h1>
-          <p className="subtitle">Выберите режим</p>
-        </header>
+        <h1 className="main-title">ВОПРОСЫ ДЛЯ СБЛИЖЕНИЯ</h1>
+        <p className="main-subtitle">с любовью для любви</p>
 
-        <div className="modes">
+        {/* Фото с овалами */}
+        <div className="photo-container">
+          <div className="oval oval-back"></div>
+          <div className="oval oval-middle"></div>
+          <div className="oval oval-front">
+            <img src={mainPhoto} alt="Главное фото" className="main-photo" />
+          </div>
+        </div>
+
+        {/* Правила */}
+        <div className="rules-section">
+          <h2 className="rules-title">Правила</h2>
+          {/* Здесь будут правила */}
+        </div>
+
+        {/* Режимы */}
+        <div className="modes-section">
           {modes.map(mode => (
             <button 
               key={mode.id} 
               className="mode-card"
-              style={{ borderColor: mode.color }}
               onClick={() => openMode(mode.id)}
             >
-              <span className="mode-emoji">{mode.emoji}</span>
-              <span className="mode-info">
-                <span className="mode-title" style={{ color: mode.color }}>{mode.title}</span>
-                <span className="mode-description">{mode.description}</span>
-              </span>
-              <span className="mode-arrow">→</span>
+              <span className="mode-title">{mode.title}</span>
+              <span className="mode-description">{mode.description}</span>
             </button>
           ))}
         </div>
@@ -68,10 +77,8 @@ function App() {
       <div className="app">
         <button className="back-btn" onClick={goBack}>←</button>
         
-        <header className="header">
-          <h1>🌡️ 8 уровней</h1>
-          <p className="subtitle">От разминки до абсолютной откровенности</p>
-        </header>
+        <h1 className="page-title">8 уровней</h1>
+        <p className="page-subtitle">От разминки до абсолютной откровенности</p>
 
         <div className="levels">
           {levels.map(level => (
@@ -81,7 +88,6 @@ function App() {
               style={{ borderColor: level.color }}
               onClick={() => openItem(level)}
             >
-              <span className="level-emoji">{level.emoji}</span>
               <span className="level-info">
                 <span className="level-title" style={{ color: level.color }}>
                   {level.title} — {level.subtitle}
@@ -109,14 +115,13 @@ function App() {
       return (
         <div className="app">
           <div className="finish-screen">
-            <span className="finish-emoji">🎉</span>
-            <h2>Все карточки пройдены!</h2>
+            <h2>Всё пройдено!</h2>
             <p className="finish-subtext">Вы прошли все {neverHaveIEver.length} карточек</p>
             <div className="finish-buttons">
               <button className="btn btn-primary" onClick={() => { setCurrentIndex(0); setIsFinished(false); }}>
-                🔄 Начать заново
+                Начать заново
               </button>
-              <button className="btn btn-secondary" onClick={goBack}>← Назад</button>
+              <button className="btn btn-secondary" onClick={goBack}>Назад</button>
             </div>
           </div>
         </div>
@@ -133,14 +138,13 @@ function App() {
           <div className="progress-bar">
             <div 
               className="progress-fill"
-              style={{ width: `${((currentIndex + 1) / neverHaveIEver.length) * 100}%`, background: '#FEAAC1' }}
+              style={{ width: `${((currentIndex + 1) / neverHaveIEver.length) * 100}%`, background: '#7AA2BB' }}
             />
           </div>
 
           <p className="question-counter">{currentIndex + 1} / {neverHaveIEver.length}</p>
 
-          <div className="question-card" style={{ borderColor: '#7AA2BB' }}>
-            <span className="question-emoji">{card.emoji}</span>
+          <div className="question-card">
             <p className="question-level">Я бы никогда не...</p>
             <h2 className="question-text">{card.text}</h2>
           </div>
@@ -155,7 +159,7 @@ function App() {
               }
             }}
           >
-            {currentIndex + 1 < neverHaveIEver.length ? 'Дальше →' : 'Завершить ✓'}
+            {currentIndex + 1 < neverHaveIEver.length ? 'Дальше' : 'Завершить'}
           </button>
         </div>
       </div>
@@ -168,14 +172,13 @@ function App() {
       return (
         <div className="app">
           <div className="finish-screen">
-            <span className="finish-emoji">🏆</span>
-            <h2>Все дилеммы пройдены!</h2>
+            <h2>Всё пройдено!</h2>
             <p className="finish-subtext">Вы прошли все {wouldYouRather.length} дилемм</p>
             <div className="finish-buttons">
               <button className="btn btn-primary" onClick={() => { setCurrentIndex(0); setIsFinished(false); }}>
-                🔄 Начать заново
+                Начать заново
               </button>
-              <button className="btn btn-secondary" onClick={goBack}>← Назад</button>
+              <button className="btn btn-secondary" onClick={goBack}>Назад</button>
             </div>
           </div>
         </div>
@@ -198,17 +201,16 @@ function App() {
 
           <p className="question-counter">{currentIndex + 1} / {wouldYouRather.length}</p>
 
-          <div className="dilemma-card" style={{ borderColor: '#7AA2BB' }}>
-            <span className="question-emoji">{dilemma.emoji}</span>
+          <div className="dilemma-card">
             <p className="question-level">Что ты выберешь?</p>
             <div className="dilemma-options">
               <div className="dilemma-option">
-                <span className="option-letter">A</span>
+                <span className="option-letter">А</span>
                 <span className="option-text">{dilemma.optionA}</span>
               </div>
-              <span className="dilemma-or">ИЛИ</span>
+              <span className="dilemma-or">или</span>
               <div className="dilemma-option">
-                <span className="option-letter">B</span>
+                <span className="option-letter">Б</span>
                 <span className="option-text">{dilemma.optionB}</span>
               </div>
             </div>
@@ -224,7 +226,7 @@ function App() {
               }
             }}
           >
-            {currentIndex + 1 < wouldYouRather.length ? 'Дальше →' : 'Завершить ✓'}
+            {currentIndex + 1 < wouldYouRather.length ? 'Дальше' : 'Завершить'}
           </button>
         </div>
       </div>
@@ -237,20 +239,19 @@ function App() {
       return (
         <div className="app">
           <div className="finish-screen">
-            <span className="finish-emoji">🏆</span>
             <h2>Уровень пройден!</h2>
             <p className="finish-text">
-              {selectedItem.emoji} {selectedItem.title} — {selectedItem.subtitle}
+              {selectedItem.title} — {selectedItem.subtitle}
             </p>
             <p className="finish-subtext">
-              Вы прошли все {selectedItem.questions.length} вопросов этого уровня
+              Вы прошли все {selectedItem.questions.length} вопросов
             </p>
             <div className="finish-buttons">
               <button className="btn btn-primary" onClick={() => { setCurrentIndex(0); setIsFinished(false); }}>
-                🔄 Пройти заново
+                Пройти заново
               </button>
               <button className="btn btn-secondary" onClick={() => setSelectedItem(null)}>
-                ← К уровням
+                К уровням
               </button>
             </div>
           </div>
@@ -279,8 +280,7 @@ function App() {
             {currentIndex + 1} / {selectedItem.questions.length}
           </p>
 
-          <div className="question-card" style={{ borderColor: selectedItem.color }}>
-            <span className="question-emoji">{selectedItem.emoji}</span>
+          <div className="question-card">
             <p className="question-level">{selectedItem.title} — {selectedItem.subtitle}</p>
             <h2 className="question-text">{question}</h2>
           </div>
@@ -295,7 +295,7 @@ function App() {
               }
             }}
           >
-            {currentIndex + 1 < selectedItem.questions.length ? 'Дальше →' : 'Завершить ✓'}
+            {currentIndex + 1 < selectedItem.questions.length ? 'Дальше' : 'Завершить'}
           </button>
         </div>
       </div>
