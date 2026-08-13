@@ -1,0 +1,232 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #1a1a2e;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.app {
+  max-width: 500px;
+  width: 100%;
+  min-height: 100vh;
+  padding: 40px 20px;
+}
+
+/* ===== ГЛАВНЫЙ ЭКРАН ===== */
+.header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.header h1 {
+  color: #fff;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  color: #888;
+  font-size: 1.1rem;
+}
+
+.categories {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.category-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-align: left;
+  color: white;
+}
+
+.category-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.category-card:active {
+  transform: translateY(0);
+}
+
+.emoji {
+  font-size: 2.5rem;
+}
+
+.category-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.category-title {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.category-description {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.question-count {
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+/* ===== ЭКРАН ВОПРОСОВ ===== */
+.question-screen {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 2rem;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  transition: color 0.2s;
+}
+
+.back-btn:hover {
+  color: #fff;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 6px;
+  background: #2a2a3e;
+  border-radius: 3px;
+  margin: 20px 0;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+.question-counter {
+  color: #888;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.question-card {
+  background: #222240;
+  border: 2px solid;
+  border-radius: 25px;
+  padding: 40px 30px;
+  text-align: center;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  min-height: 300px;
+}
+
+.question-emoji {
+  font-size: 4rem;
+}
+
+.question-text {
+  color: #fff;
+  font-size: 1.5rem;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+.next-btn {
+  margin-top: 30px;
+  width: 100%;
+}
+
+/* ===== КНОПКИ ===== */
+.btn {
+  padding: 15px 30px;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #FF6B6B, #FF69B4);
+  color: white;
+}
+
+.btn-secondary {
+  background: #2a2a3e;
+  color: #fff;
+}
+
+/* ===== ЭКРАН ЗАВЕРШЕНИЯ ===== */
+.finish-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  text-align: center;
+  gap: 20px;
+}
+
+.finish-emoji {
+  font-size: 5rem;
+}
+
+.finish-screen h2 {
+  color: #fff;
+  font-size: 2rem;
+}
+
+.finish-text {
+  color: #fff;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.finish-subtext {
+  color: #888;
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+.finish-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  max-width: 300px;
+}
