@@ -7,3 +7,13 @@
   font-style: normal;
   font-display: swap;
 }
+
+@font-face {
+  font-family: 'Floriselscript';
+  src: url('./fonts/Floriselscript.woff2') format('woff2'),
+       url('./fonts/Floriselscript.woff') format('woff'),
+       url('./fonts/Floriselscript.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
