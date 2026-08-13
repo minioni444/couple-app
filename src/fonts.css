@@ -1,6 +1,8 @@
 @font-face {
   font-family: 'NauryzRedKeds';
-  src: url('./fonts/NauryzRedKeds.ttf') format('truetype');
+  src: url('./fonts/NauryzRedKeds.woff2') format('woff2'),
+       url('./fonts/NauryzRedKeds.woff') format('woff'),
+       url('./fonts/NauryzRedKeds.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
