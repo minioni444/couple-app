@@ -314,4 +314,3 @@ export const modes = [
     description: 'Сложные дилеммы для двоих'
   }
 ]
-]
