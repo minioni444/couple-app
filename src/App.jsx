@@ -47,6 +47,7 @@ function App() {
             <img src={mainPhoto} alt="Главное фото" className="main-photo" />
           </div>
         </div>
+        
 
         {/* Правила */}
         <div className="rules-section">

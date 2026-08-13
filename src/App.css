@@ -50,6 +50,7 @@ body {
   margin-bottom: 50px;
 }
 
+
 .oval {
   position: absolute;
   border-radius: 150px;
@@ -94,6 +95,7 @@ body {
   height: 100%;
   object-fit: cover;
 }
+
 
 /* Правила */
 .rules-section {
