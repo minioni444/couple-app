@@ -41,59 +41,57 @@ body {
   line-height: 0;
 }
 
-/* Фото с овалами */
+/* Контейнер с овалами */
 .photo-container {
   position: relative;
   width: 120%;
-  height: 600px;
-  margin-top: 40px;
-  margin-bottom: 50px;
+  height: 470px;
+  z-index: 1; /* ниже */
 }
 
+/* Контейнер с фото */
+.photo-container-photo {
+  position: relative;
+  width: 180%;
+  height: 500px;
+  margin-top: -550px; /* наезжает на овалы */
+  z-index: 10; /* выше — фото поверх овалов */
+}
 
 .oval {
   position: absolute;
   border-radius: 150px;
   width: 65%;
-  height: 70%;
+  height: 55%;
   border: none;
-  bottom: 15%; /* все на одной линии */
+  bottom: 0;
 }
 
 .oval-back {
   background: #7AA2BB;
   right: -5%;
-  transform: rotate(0deg);
 }
 
 .oval-middle {
   background: #FEAAC1;
   right: 25%;
-  transform: rotate(0deg);
 }
 
 .oval-front {
   background: #7AA2BB;
   right: 55%;
-  transform: rotate(0deg);
-  /* убрали overflow: hidden */
 }
 
 .main-photo {
   position: absolute;
-  width: 55%; /* размер фото */
-  height: 80%; /* размер фото */
+  width: -85%;
+  height: 80%;
   object-fit: cover;
   border-radius: 40px;
-  bottom: 30%;
-  right: -70%; /* позиция — поверх прямоугольников */
-  z-index: 10; /* поверх всех */
-}
-
-.main-photo {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  bottom: 0;
+  right: 30%;
+  z-index: 10;
+  
 }
 
 

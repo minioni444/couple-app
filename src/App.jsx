@@ -39,14 +39,17 @@ function App() {
         <h1 className="main-title">ВОПРОСЫ ДЛЯ СБЛИЖЕНИЯ</h1>
         <p className="main-subtitle">с любовью для любви</p>
 
-        {/* Фото с овалами */}
-        <div className="photo-container">
-          <div className="oval oval-back"></div>
-          <div className="oval oval-middle"></div>
-          <div className="oval oval-front">
-            <img src={mainPhoto} alt="Главное фото" className="main-photo" />
-          </div>
-        </div>
+        {/* Овалы */}
+<div className="photo-container">
+  <div className="oval oval-back"></div>
+  <div className="oval oval-middle"></div>
+  <div className="oval oval-front"></div>
+</div>
+
+{/* Фото */}
+<div className="photo-container-photo">
+  <img src={mainPhoto} alt="Главное фото" className="main-photo" />
+</div>
         
 
         {/* Правила */}
